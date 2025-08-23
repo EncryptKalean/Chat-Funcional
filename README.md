@@ -20,16 +20,16 @@ O objetivo foi aprender e implementar funcionalidades comuns em aplicativos de m
 ## 📸 Screenshots
 
 ### 🔑 Tela de Login
-![Login](/Imagens/login.png)
+![Login](/Imagens/login.webp)
 
 ### 💬 Tela do Chat
-![Chat](/Imagens/chat.png)
+![Chat](/Imagens/chat.webp)
 
 ### 🎨 Customização de Tema
-![Menu de cores](/Imagens/menu.png)
+![Menu de cores](/Imagens/menu.webp)
 
 ### 👥 Usuários Registrados
-![Painel de usuários](/Imagens/painel_registrados.png)
+![Painel de usuários](/Imagens/painel_registrados.webp)
 
 ---
 
@@ -46,5 +46,6 @@ O objetivo foi aprender e implementar funcionalidades comuns em aplicativos de m
 No entanto, você pode acessar o código completo no repositório e rodar localmente:
 
 ---
+
 
 ✌️ Feito com dedicação como um projeto de aprendizado!
