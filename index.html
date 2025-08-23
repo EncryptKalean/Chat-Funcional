@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>menssagem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style id="style"></style>
+</head>
+<body>
+    <!-- Tela de login -->
+    <div id="registrar_container">
+        <div id="registrar" class="">
+            <h2>login / registro</h2>
+            <input type="text" name="nickname" id="nick" placeholder="usuário">
+            <input type="password" name="senha" id="senha" placeholder="senha">
+            <a id="nick_enviar">pronto</a>
+        </div>
+        <a class="resetar_cache">resetar cache</a>
+    </div>
+    <!-- Onde aparece as mensagens -->
+    <section id="vitrine">
+        <!-- <div class="suaMsg respondendo" style="order: 100;">
+            <div class="msg_antiga">
+                <h4>nome</h4>
+                <p>text</p>
+            </div>
+            <h4>Nome</h4>
+            <p>aaaaaaaaaaaa</p>
+            <p class="hora">99:99</p>
+        </div> -->
+        <!-- <div class="outraMsg">
+            <h4>Nome</h4>
+            <p>aaaaaaaaaaaa</p>
+            <p class="hora">99:99</p>
+        </div> -->
+        <!-- <div class="novoUsuario">@nome entrou no chat</div> -->
+    </section>
+    <!-- Campo de digitar -->
+    <div id="campo_container" class="">
+        <div id="responder">
+            <h4></h4>
+            <p></p>
+        </div>
+        <textarea name="" id="campoEscrita" placeholder="Escrever..." rows="3" cols="50"></textarea>
+        <a id="enviar_btn"><svg><use href="#icon_enviar"/></svg></a>
+    </div>
+    <!-- Menu esquerdo (painel de cores) -->
+    <a id="abrir_menu"><svg><use href="#icon_engrenagem" /></svg></a>
+    <div id="menu" class="">
+        <label for="suas_cores">cor tema</label>
+        <div id="suas_cores">
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+            <a class="cor_tema" ></a>
+        </div>
+            <input id="cor_tema_input" type="text" placeholder="NOMES EM INGLES / RGB / HEX">
+            <a id="testar_cor_tema_btn">testar cor</a>
+        <label for="fundo_cores">Cor do fundo</label>
+        <div id="fundo_cores">
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+            <a class="cor_fundo" ></a>
+        </div>
+            <input id="cor_fundo_input" type="text" placeholder="NOMES EM INGLES / RGB / HEX">
+            <a id="testar_cor_fundo_btn">testar cor</a>
+        <div>
+            <div>
+            <input id="imagem_fundo_input" type="url" placeholder="URL">
+            <a id="testar_imagem_fundo_btn">testar imagem</a>
+            </div>
+        </div>
+        <label for="texto_cores">Cor dos textos</label>
+        <div id="texto_cores">
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+            <a class="cor_texto" ></a>
+        </div>
+        <label for="nomes_cores">Cor dos nomes</label>
+        <div id="nomes_cores">
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+            <a class="cor_nomes" ></a>
+        </div>
+        <a class="resetar_cache" id="cache_menu">resetar cache</a>
+        <a id="procurar_atualizacao" name="procurarAtt">procurar atualização</a>
+        <a id="salvar_cores">salvar</a>
+        <a id="fechar_menu"><svg><use href="#icon_mais" /></svg></a>
+    </div>
+    <!-- Menu direito (registros) -->
+    <a id="abrir_lista"><svg><use href="#icon_pessoas" /></svg></a>
+    <div id="lista" class="">
+        <div id="voce" name="">
+            <input type="text"  id="voce_nome">
+            <svg><use href="#icon_lapis" /></svg>
+        </div>
+        <div id="aviso_troca_nome" class="">
+            <label for="nome">novo nome</label>
+            <h3>pipipi</h3>
+            <label for="senha">coloque sua senha para poder prosseguir</label>
+            <input id="senha_input" name="senha" type="text">
+            <a name="trocar_sim">enviar</a>
+        </div>
+        <label>registrados</label>
+        <!-- <span>
+            <svg><use href="#icon_perfil"/></svg>
+            NOME EXEPLO
+        </span>
+        <div class="cores_usadas">
+            <span>tema: <div class="cor_box"></div></span>
+            <span>textos: <div class="cor_box"></div></span>
+            <span>nomes: <div class="cor_box"></div></span>
+            <span>fundo: <div class="cor_box"></div></span>
+        </div> -->
+        <a id="fechar_lista"><svg><use href="#icon_mais" /></svg></a>
+    </div>
+    <!-- Painel de erro, caso necessario -->
+    <div id="aviso_erro" class="">
+        <h2>erro</h2>
+        <p>numero | erro</p>
+        <p id="aviso_local">em: local_do_erro</p>
+    </div>
+    <svg style="display: none; fill: currentColor;">
+        <symbol id="icon_enviar" viewBox="0 0 640 640">
+            <path d="M322.5 351.7L523.4 150.9L391 520.3L322.5 351.7zM489.4 117L288.6 317.8L120 249.3L489.4 117zM70.1 280.8L275.9 364.4L359.5 570.2C364.8 583.3 377.6 591.9 391.8 591.9C406.5 591.9 419.6 582.7 424.6 568.8L602.6 72C606.1 62.2 603.6 51.4 596.3 44C589 36.6 578.1 34.2 568.3 37.7L71.4 215.7C57.5 220.7 48.3 233.8 48.3 248.5C48.3 262.7 56.9 275.5 70 280.8z"/>
+        </symbol>
+        <symbol id="icon_mais" viewBox="0 0 640 640">
+            <path d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z"/>
+        </symbol>
+        <symbol id="icon_engrenagem" viewBox="0 0 640 640">
+            <path d="M259.1 73.5C262.1 58.7 275.2 48 290.4 48L350.2 48C365.4 48 378.5 58.7 381.5 73.5L396 143.5C410.1 149.5 423.3 157.2 435.3 166.3L503.1 143.8C517.5 139 533.3 145 540.9 158.2L570.8 210C578.4 223.2 575.7 239.8 564.3 249.9L511 297.3C511.9 304.7 512.3 312.3 512.3 320C512.3 327.7 511.8 335.3 511 342.7L564.4 390.2C575.8 400.3 578.4 417 570.9 430.1L541 481.9C533.4 495 517.6 501.1 503.2 496.3L435.4 473.8C423.3 482.9 410.1 490.5 396.1 496.6L381.7 566.5C378.6 581.4 365.5 592 350.4 592L290.6 592C275.4 592 262.3 581.3 259.3 566.5L244.9 496.6C230.8 490.6 217.7 482.9 205.6 473.8L137.5 496.3C123.1 501.1 107.3 495.1 99.7 481.9L69.8 430.1C62.2 416.9 64.9 400.3 76.3 390.2L129.7 342.7C128.8 335.3 128.4 327.7 128.4 320C128.4 312.3 128.9 304.7 129.7 297.3L76.3 249.8C64.9 239.7 62.3 223 69.8 209.9L99.7 158.1C107.3 144.9 123.1 138.9 137.5 143.7L205.3 166.2C217.4 157.1 230.6 149.5 244.6 143.4L259.1 73.5zM320.3 400C364.5 399.8 400.2 363.9 400 319.7C399.8 275.5 363.9 239.8 319.7 240C275.5 240.2 239.8 276.1 240 320.3C240.2 364.5 276.1 400.2 320.3 400z"/>
+        </symbol>
+        <symbol id="icon_pessoas" viewBox="0 0 640 640">
+            <path d="M320 80C377.4 80 424 126.6 424 184C424 241.4 377.4 288 320 288C262.6 288 216 241.4 216 184C216 126.6 262.6 80 320 80zM96 152C135.8 152 168 184.2 168 224C168 263.8 135.8 296 96 296C56.2 296 24 263.8 24 224C24 184.2 56.2 152 96 152zM0 480C0 409.3 57.3 352 128 352C140.8 352 153.2 353.9 164.9 357.4C132 394.2 112 442.8 112 496L112 512C112 523.4 114.4 534.2 118.7 544L32 544C14.3 544 0 529.7 0 512L0 480zM521.3 544C525.6 534.2 528 523.4 528 512L528 496C528 442.8 508 394.2 475.1 357.4C486.8 353.9 499.2 352 512 352C582.7 352 640 409.3 640 480L640 512C640 529.7 625.7 544 608 544L521.3 544zM472 224C472 184.2 504.2 152 544 152C583.8 152 616 184.2 616 224C616 263.8 583.8 296 544 296C504.2 296 472 263.8 472 224zM160 496C160 407.6 231.6 336 320 336C408.4 336 480 407.6 480 496L480 512C480 529.7 465.7 544 448 544L192 544C174.3 544 160 529.7 160 512L160 496z"/>
+        </symbol>
+        <symbol id="icon_perfil" viewBox="0 0 640 640">
+            <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/>
+        </symbol>
+        <symbol id="icon_lapis" viewBox="0 0 640 640">
+            <path d="M535.6 85.7C513.7 63.8 478.3 63.8 456.4 85.7L432 110.1L529.9 208L554.3 183.6C576.2 161.7 576.2 126.3 554.3 104.4L535.6 85.7zM236.4 305.7C230.3 311.8 225.6 319.3 222.9 327.6L193.3 416.4C190.4 425 192.7 434.5 199.1 441C205.5 447.5 215 449.7 223.7 446.8L312.5 417.2C320.7 414.5 328.2 409.8 334.4 403.7L496 241.9L398.1 144L236.4 305.7zM160 128C107 128 64 171 64 224L64 480C64 533 107 576 160 576L416 576C469 576 512 533 512 480L512 384C512 366.3 497.7 352 480 352C462.3 352 448 366.3 448 384L448 480C448 497.7 433.7 512 416 512L160 512C142.3 512 128 497.7 128 480L128 224C128 206.3 142.3 192 160 192L256 192C273.7 192 288 177.7 288 160C288 142.3 273.7 128 256 128L160 128z"/>
+        </symbol>
+    </svg>
+</body>
+<script type="module" src="login.js"></script>
+<script type="module" src="geral.js"></script>
+<script type="module" src="menus.js"></script>
+</html>
+
+<!-- Observação: Como este projeto foi desenvolvido com foco pessoal, priorizei o desempenho em vez de otimizações de SEO. -->
