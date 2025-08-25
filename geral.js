@@ -22,6 +22,7 @@ Requisitos para usar:
     * resposta_texto        (Conteudo da mensagem que está sendo respondida)
     * id_respondendo        (ID da mensagem que está sendo respondida)
     (Todas do tipo text)
+- Ativar o Realtime no table chat
 */
 
 const seuNome = localStorage.getItem('nickname') ?? '',
@@ -456,38 +457,45 @@ async function atualizandoMsg(msgAtualizada, id, minutos) {
     }
 }
 
-// Procura nova mensagens cada 3 segundos
-setInterval(() => {
-    novasMsgs()
-}, 3000);
+// Pega as novas mensagens automaticamente
+let channel = null;
 
-// procurando novas mensagens
-async function novasMsgs() {
-    const { data, error } = await supabase.from('chat').select('*')
-    // Procura as ultimas 15 mensagens, exceto as que possuem o seu nick
-        .not('id_mensagem', 'ilike', `%${nickOriginal}%`)
-        .order('id', { ascending: false })
-        .limit(15);
-
-    // Tira as mensagem que já estão registradas no seu aparelho 
-    const filtrado = data.reverse().filter(item => !chatIDS.includes(item.id_mensagem));
-
-    if (error) {
-        aviso(error, 'funct_newsMSGS')
-    }
-    else if (filtrado != '') {
-        filtrado.forEach((msg) => {
-            const container = document.querySelector(`#${msg.id_mensagem.split('att_')[1]} > p`) ?? '';
-            if (container != '') {
-                container.innerHTML = msg.msg
+function procurandoMsg() {
+    channel = supabase
+        .channel('chat-realtime')
+        .on('postgres_changes',
+            {
+                event: 'INSERT',
+                schema: 'public',
+                table: 'chat'
+            },
+            (payload) => {
+                const msg = payload.new;
+                if (msg.nome_usuario != seuNome) {
+                    render(msg)
+                    chat.push(msg);
+                    console.log('Mensagem Nova');
+                };
             }
-            else {
-                render(msg)
+        )
+        .on('postgres_changes',
+            {
+                event: 'UPDATE',
+                schema: 'public',
+                table: 'chat'
+            },
+            (payload) => {
+                const msg = payload.new;
+                const container = document.querySelector(`#${msg.id_mensagem.split('att_')[1]} > p`) ?? '';
+                if (container != '') {
+                    container.innerHTML = msg.msg;
+                    chat.push(msg);
+                };
             }
-
-            chat.push(msg)
-        })
-    }
+        )
+        .subscribe();
+};
 
     console.log('procurando msg...')
+
 };
