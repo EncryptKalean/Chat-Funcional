@@ -15,6 +15,7 @@ body {
     url(https://i.ibb.co/NFRhL44/img.jpg) center center / cover no-repeat;
   width: 100%;
   max-width: 600px;
+  transition: background 1s;
 }
 
 * {
@@ -23,7 +24,7 @@ body {
   box-sizing: border-box;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  transition: color 1s, background 1s;
+  transition: color 1s, background 1s, fill 1s;
 }
 
 *:focus-visible {
@@ -87,10 +88,10 @@ html {
   width: 100%;
   min-height: 50px;
   padding: 5px 10px;
-  background-color: grey;
+  background-color: rgba(128, 128, 128, 0.3);
   border: 2px solid var(--cor_sua);
   border-radius: inherit;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 14px;
@@ -100,6 +101,10 @@ html {
 
 #campoEscrita::placeholder {
   color: var(--cor_textos);
+}
+
+#upload {
+  display: none;
 }
 
 a {
@@ -120,25 +125,33 @@ use {
   fill: var(--cor_nomes);
 }
 
-#enviar_btn {
+#enviar_btn,
+#botao_midia {
   display: flex;
   justify-content: center;
+  align-self: center;
   background-color: var(--cor_sua);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  width: 20%;
-  min-width: 40px;
-  max-width: 70px;
-  padding: 5px;
+  height: 20%;
+  min-height: 40px;
+  max-height: 70px;
   aspect-ratio: 1;
+  padding: 5px;
   color: var(--cor_textos);
+  cursor: pointer;
+}
+
+#botao_midia {
+  border-radius: 20px;
+  padding: 0;
 }
 
 .suaMsg,
 .outraMsg,
 #responder {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  max-width: 90%;
+  max-width: 70%;
   border-radius: 10px;
   padding: 2%;
   padding-right: 4%;
@@ -147,6 +160,32 @@ use {
   align-self: flex-end;
   border: 1px solid rgba(128, 128, 128, 0.2);
   position: relative;
+  transition: 1s;
+}
+
+.anim1 {
+  transition: 1s;
+  animation: 2s anim1 0.5s !important;
+}
+
+@keyframes anim1 {
+  15% {
+    background-color: var(--cor_textos);
+  }
+  30% {
+    background-color: var(--cor_sua);
+  }
+  45% {
+    background-color: var(--cor_textos);
+  }
+  60% {
+    background-color: var(--cor_sua);
+  }
+  80% {
+    background-color: var(--cor_textos);
+  }
+  100% {
+  }
 }
 
 .suaMsg {
@@ -164,6 +203,79 @@ use {
   box-shadow: inherit;
   margin-top: 10px;
   width: 100%;
+}
+
+.suaMsg > img,
+.outraMsg > img {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+/* Zoom em imagem */
+
+#background_zoom {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  opacity: 0;
+  transition: 1s;
+}
+
+#background_zoom.aberto {
+  top: 0;
+  opacity: 1;
+}
+
+#fechar_zoom {
+  position: fixed;
+  right: -20%;
+  top: 1%;
+  opacity: 0;
+  background-color: red;
+  border-radius: 50%;
+  rotate: 45deg;
+  width: 50px;
+  z-index: 5;
+  transition: 1s;
+}
+
+#fechar_zoom.aberto {
+  right: 1%;
+  opacity: 1;
+}
+
+#fechar_zoom use {
+  width: 70%;
+  aspect-ratio: 1;
+  fill: white;
+}
+
+.imagem_zoom {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 50%;
+  transform: translateY(50%);
+  z-index: 3;
+  object-fit: contain;
+}
+
+/* ----- */
+
+.suaMsg > audio,
+.outraMsg > audio {
+  margin-top: 10px;
+  width: 60vw;
+  max-width: 100%;
 }
 
 .outraMsg {
@@ -219,6 +331,12 @@ use {
   margin-top: 60px;
 }
 
+.msg_antiga img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /*--------------------------------- Menu */
 
 #abrir_menu,
@@ -254,7 +372,7 @@ use {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   width: 65%;
   height: 100%;
-  padding: 5%;
+  padding: 3%;
   color: var(--cor_textos);
   letter-spacing: 1px;
   z-index: 4;
@@ -286,6 +404,7 @@ use {
   font-weight: bold;
   font-size: 18px;
   color: inherit;
+  text-shadow: 0 0 10px var(--cor_sua);
 }
 
 #menu > div {
@@ -394,6 +513,38 @@ use {
   border-radius: 10px;
 }
 
+/* Menu Imagens */
+
+#imagens_pred a {
+  border-radius: 10px !important;
+  width: 30% !important;
+  aspect-ratio: 9/16 !important;
+  overflow: hidden;
+  background-color: transparent !important;
+  border: 2px solid var(--cor_sua) !important;
+}
+
+#imagens_pred img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 1s;
+}
+
+#orientacao_imagens > a {
+  background-color: var(--cor_sua) !important;
+  color: var(--cor_nomes);
+  font-weight: bold;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  width: auto !important;
+  height: 50px;
+  margin: 0 10px;
+}
+
+/* ------- */
+
 #fechar_menu,
 #salvar_cores,
 #fechar_lista {
@@ -425,8 +576,12 @@ use {
 #lista {
   right: -100vw;
   width: 50%;
-  color: var(--cor_nomes);
+  color: white;
   align-items: flex-start;
+}
+
+#lista input {
+  color: white;
 }
 
 #lista label {
@@ -444,6 +599,18 @@ use {
   margin-right: 5px;
 }
 
+#lista use {
+  fill: white;
+}
+
+#lista span a {
+  background-color: green;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bolder;
+  border-radius: 10px;
+}
+
 .cores_usadas {
   margin-top: -10px;
   width: 100%;
@@ -451,13 +618,16 @@ use {
   display: flex;
   overflow-y: hidden;
   flex-direction: column;
-  align-items: center;
   gap: 5px;
   transition: 1s;
 }
 
 .cores_usadas.aberto {
   height: 100px;
+}
+
+.cores_usadas > span {
+  justify-content: space-between;
 }
 
 .cor_box {
@@ -643,7 +813,7 @@ use {
 
 #menu a#cache_menu {
   margin: 0;
-  bottom: -25%;
+  bottom: -85%;
 }
 
 #procurar_atualizacao {
@@ -651,7 +821,23 @@ use {
   font-size: 14px !important;
   margin: 0;
   width: 100%;
-  bottom: -35%;
+  bottom: -95%;
+}
+
+/* Novas MSGS Aviso */
+
+#novasMsgs {
+  width: 100%;
+  height: 40px;
+  background-color: var(--cor_sua);
+  color: var(--cor_nomes);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  align-content: center;
+  margin: 15px 0;
 }
 
 /*--------------------------------- AVISO TELA */
