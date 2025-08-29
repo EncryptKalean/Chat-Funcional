@@ -3,8 +3,8 @@ let cores = JSON.parse(localStorage.getItem('cores')) ?? {
     corFundo: 'black',
     corTexto: 'white',
     corNomes: 'white',
-    imagemFundo: ``,
-}
+    imagemFundo: `sem_imagem`,
+};
 
 const body = document.body,
     seuNome = localStorage.getItem('nickname'),
@@ -12,7 +12,8 @@ const body = document.body,
     senha = localStorage.getItem('senha'),
     supabase = window.supabase,
     btn_atualizacao = document.getElementById('procurar_atualizacao'),
-    nickOriginal = localStorage.getItem('nickOriginal') ?? '';
+    nickOriginal = localStorage.getItem('nickOriginal') ?? '',
+    imagens_menu = document.querySelectorAll('#imagens_pred img');
 
 document.getElementById('lista').addEventListener('click', (click) => {
     let apertou = click.target.closest('a');
@@ -38,6 +39,7 @@ document.getElementById('lista').addEventListener('click', (click) => {
 
 });
 
+// VOCE
 document.getElementById('voce_nome').setAttribute('value', seuNome);
 async function atualizandoNome(novoNome) {
     const { data, error } = await supabase.from('chat')
@@ -54,6 +56,7 @@ async function atualizandoNome(novoNome) {
 let coresVariaveis = document.documentElement.style;
 coresVariaveis.setProperty('--cor_sua', cores.corTema);
 coresVariaveis.setProperty('--cor_textos', cores.corTexto);
+coresVariaveis.setProperty('--cor_nomes', cores.corNomes);
 
 if (cores.imagemFundo != 'sem_imagem') {
     body.style.background = cores.imagemFundo
@@ -62,6 +65,8 @@ else {
     coresVariaveis.setProperty('--cor_fundo', cores.corFundo);
     body.style.background = 'var(--cor_fundo)'
 }
+
+let orientacao = 'center';
 
 menu_container.addEventListener('click', (click) => {
     let btn = click.target.closest('a');
@@ -100,9 +105,22 @@ menu_container.addEventListener('click', (click) => {
     else if (btn.id === 'testar_imagem_fundo_btn') {
         let imagem_input = document.getElementById('imagem_fundo_input').value.trim();
 
-        body.style.background = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${imagem_input}) center center / cover no-repeat`;
+        body.style.background = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${imagem_input}) center ${orientacao} / cover no-repeat`;
 
-        cores.imagemFundo = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${imagem_input}) center center / cover no-repeat`;
+        cores.imagemFundo = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${imagem_input}) center ${orientacao} / cover no-repeat`;
+    }
+    else if(btn.parentElement === document.getElementById('orientacao_imagens')){
+        orientacao = btn.name;
+        imagens_menu.forEach((el)=>{
+            el.style.setProperty('object-position', orientacao);
+        })
+    }
+    else if(btn.parentElement === document.getElementById('imagens_pred')){
+        let img = btn.querySelector('img').src;
+
+        body.style.background = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${img}) center ${orientacao} / cover no-repeat`;
+
+        cores.imagemFundo = `linear-gradient(rgba(0, 255, 85, 0), rgba(0, 0, 0, 0.6)), url(${img}) center ${orientacao} / cover no-repeat`;
     }
     else if (btn.classList.contains('cor_texto')) {
         coresVariaveis.setProperty('--cor_textos', cor)
