@@ -15,6 +15,17 @@ O objetivo foi aprender e implementar funcionalidades comuns em aplicativos de m
 - Sistema de login e registro.
 - Listagem de usuários registrados.
 
+
+## ✨ Atualização
+
+- 🎨 O menu de cores agora permite trocar a imagem de fundo (com opções pré-definidas ou via URL) e alinhar do jeito que você quiser.
+- 📍 Nova barra para separar mensagens novas das antigas.
+- 👥 O painel de usuários conectados agora exibe também o padrão de cores escolhido por cada um.
+- 🖼️🎵 Suporte a envio de imagens e áudios — com possibilidade de responder a eles.
+- 🔎 Imagens podem ser abertas em fullscreen.
+- ⚡ O app agora recebe mensagens em tempo real sem precisar de setInterval.
+- 🗜️ Upload de imagens otimizado: conversão automática para WebP + redução de resolução.
+
 ---
 
 ## 📸 Screenshots
@@ -49,3 +60,4 @@ No entanto, você pode acessar o código completo no repositório e rodar localm
 
 
 ✌️ Feito com dedicação como um projeto de aprendizado!
+
