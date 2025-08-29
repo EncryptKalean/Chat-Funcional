@@ -35,9 +35,11 @@ O objetivo foi aprender e implementar funcionalidades comuns em aplicativos de m
 
 ### 💬 Tela do Chat
 ![Chat](/Imagens/chat.webp)
+![Chat com midias](/Imagens/midias.webp)
 
 ### 🎨 Customização de Tema
-![Menu de cores](/Imagens/menu.webp)
+![Menu de cores](/Imagens/menu_1.webp)
+![Menu de background](/Imagens/menu_2.webp)
 
 ### 👥 Usuários Registrados
 ![Painel de usuários](/Imagens/painel_registrados.webp)
@@ -60,4 +62,5 @@ No entanto, você pode acessar o código completo no repositório e rodar localm
 
 
 ✌️ Feito com dedicação como um projeto de aprendizado!
+
 
